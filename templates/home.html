@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Header Section -->
+<section class="text-center my-10">
+    <h1 class="text-4xl font-bold text-gray-900">Welcome to My Portfolio</h1>
+    <p class="text-lg text-gray-600 mt-4">Explore my skills, projects, and experiences below.</p>
+</section>
+
+<!-- Skills Section -->
+<section class="my-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">Skills</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for skill in skills %}
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-lg font-semibold text-gray-800">{{ skill.name }}</h3>
+            <p class="text-sm text-gray-600 mt-2">{{ skill.description }}</p>
+            
+        </div>
+        {% empty %}
+        <p>No skills available.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="my-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for project in projects %}
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-lg font-semibold text-gray-800">{{ project.title }}</h3>
+            <p class="text-sm text-gray-600 mt-2">{{ project.description }}</p>
+            <a href="{{ project.link }}" class="text-gray-800 hover:text-gray-600 px-3">Loyhani ko'rish</a>
+        </div>
+        {% empty %}
+        <p>No projects available.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="my-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">Contact Information</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for contact in contacts %}
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-lg font-semibold text-gray-800">Email: {{ contact.email }}</h3>
+            <p class="text-sm text-gray-600 mt-2">Phone: {{ contact.phone_number }}</p>
+        </div>
+        {% empty %}
+        <p>No contact information available.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Social Media Section -->
+<section id="social_media" class="my-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">Social Media</h2>
+    <div class="flex space-x-4 justify-center">
+        {% for social in social_media %}
+        <a href="{{ social.link }}" class="text-gray-600 hover:text-gray-800" target="_blank">
+            <i class="{{ social.icon }} fa-2x"></i>
+        </a>
+        {% empty %}
+        <p>No social media links available.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
